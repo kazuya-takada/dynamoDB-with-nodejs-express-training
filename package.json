@@ -1,0 +1,26 @@
+{
+  "name": "dynamoDB-with-nodejs-express-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazuya-takada/dynamoDB-with-nodejs-express-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kazuya-takada/dynamoDB-with-nodejs-express-training/issues"
+  },
+  "homepage": "https://github.com/kazuya-takada/dynamoDB-with-nodejs-express-training#readme",
+  "dependencies": {
+    "aws-sdk": "^2.1082.0",
+    "axios": "^0.26.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}
