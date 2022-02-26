@@ -15,23 +15,45 @@ const getCharacters = async () => {
     TableName: TABLE_NAME
   }
   const characters = await dynamoClient.scan(params).promise()
-  console.log(characters)
   return characters
 }
 
+const getCharacterById = async (id) => {
+  const params = {
+    TableName: TABLE_NAME,
+    Key: {
+      id
+    }
+  }
+  return await dynamoClient.get(params).promise()
+}
+
+
+
+
+const deleteCharacter = async (id) => {
+  const params = {
+    TableName: TABLE_NAME,
+    Key: {
+      id
+    }
+  }
+  return await dynamoClient.delete(params).promise()
+}
+
+
+const addOrUpdateCharacter = async (character) => {
+  const params = {
+    TableName: TABLE_NAME,
+    Item: character
+  }
+  return await dynamoClient.put(params).promise()
+}
+
+
 /**
- * dynamoDBへのデータ追加用。項目を追加したい場合はコメントアウトを一時的に外すこと
+ * 追加用のデータ。適宜変更のこと
  */
-// const addOrUpdateCharacter = async (character) => {
-//   const params = {
-//     TableName: TABLE_NAME,
-//     Item: character
-//   }
-//   return await dynamoClient.put(params).promise()
-// }
-
-getCharacters()
-
 // const hp = {
 //   "id": "0",
 //   "name": "Harry Potter",
@@ -59,4 +81,10 @@ getCharacters()
 //   "image": "http://hp-api.herokuapp.com/images/harry.jpg"
 // }
 
-// addOrUpdateCharacter(hp)
+module.exports = {
+  dynamoClient,
+  getCharacters,
+  getCharacterById,
+  addOrUpdateCharacter,
+  deleteCharacter
+}
