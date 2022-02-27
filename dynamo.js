@@ -28,8 +28,13 @@ const getCharacterById = async (id) => {
   return await dynamoClient.get(params).promise()
 }
 
-
-
+const addOrUpdateCharacter = async (character) => {
+  const params = {
+    TableName: TABLE_NAME,
+    Item: character
+  }
+  return await dynamoClient.put(params).promise()
+}
 
 const deleteCharacter = async (id) => {
   const params = {
@@ -40,46 +45,6 @@ const deleteCharacter = async (id) => {
   }
   return await dynamoClient.delete(params).promise()
 }
-
-
-const addOrUpdateCharacter = async (character) => {
-  const params = {
-    TableName: TABLE_NAME,
-    Item: character
-  }
-  return await dynamoClient.put(params).promise()
-}
-
-
-/**
- * 追加用のデータ。適宜変更のこと
- */
-// const hp = {
-//   "id": "0",
-//   "name": "Harry Potter",
-//   "alternate_names": [],
-//   "species": "human",
-//   "gender": "male",
-//   "house": "Gryffindor",
-//   "dateOfBirth": "31-07-1980",
-//   "yearOfBirth": 1980,
-//   "wizard": true,
-//   "ancestry": "half-blood",
-//   "eyeColour": "green",
-//   "hairColour": "black",
-//   "wand": {
-//     "wood": "holly",
-//     "core": "phoenix feather",
-//     "length": 11
-//   },
-//   "patronus": "stag",
-//   "hogwartsStudent": true,
-//   "hogwartsStaff": false,
-//   "actor": "Daniel Radcliffe",
-//   "alternate_actors": [],
-//   "alive": true,
-//   "image": "http://hp-api.herokuapp.com/images/harry.jpg"
-// }
 
 module.exports = {
   dynamoClient,
